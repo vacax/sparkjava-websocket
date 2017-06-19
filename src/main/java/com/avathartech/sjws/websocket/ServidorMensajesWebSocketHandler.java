@@ -46,9 +46,12 @@ public class ServidorMensajesWebSocketHandler {
     @OnWebSocketMessage
     public void recibiendoMensaje(Session usuario, String message) {
         System.out.println("Recibiendo del cliente: "+usuario.getLocalAddress().getAddress().toString()+" - Mensaje"+message);
-         //Enviar un simple mensaje al cliente que mando al servidor..
         try {
-            usuario.getRemote().sendString("Mensaje Recibido Cliente");
+            //Enviar un simple mensaje al cliente que mando al servidor..
+            usuario.getRemote().sendString("Mensaje enviado al Servidor: "+message);
+            //mostrando a todos los clientes
+            Main.enviarMensajeAClientesConectados(message, "azul");
+
         } catch (IOException e) {
             e.printStackTrace();
         }

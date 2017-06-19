@@ -48,7 +48,7 @@ public class Main {
          */
         get("/enviarMensaje",(request, response) ->{
             String mensaje = request.queryParams("mensaje");
-            enviarMensajeAClientesConectados(mensaje);
+            enviarMensajeAClientesConectados(mensaje, "rojo");
             return "Enviando mensaje: "+mensaje;
         });
 
@@ -59,12 +59,14 @@ public class Main {
 
     /**
      * Permite enviar un mensaje al cliente.
+     * Ver uso de la librería: https://j2html.com/
      * @param mensaje
+     * @param color
      */
-    public static void enviarMensajeAClientesConectados(String mensaje){
+    public static void enviarMensajeAClientesConectados(String mensaje, String color){
         for(Session sesionConectada : usuariosConectados){
             try {
-                sesionConectada.getRemote().sendString(p(mensaje).withClass("rojo").render());
+                sesionConectada.getRemote().sendString(p(mensaje).withClass(color).render());
             } catch (IOException e) {
                 e.printStackTrace();
             }

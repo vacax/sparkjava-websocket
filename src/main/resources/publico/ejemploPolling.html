@@ -3,6 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Ejemplo Polling</title>
+    <!-- Incluyendo la libreria de JQuery-->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            alert("Hola mundo");
+            console.info("Iniciando Jquery -  Ejemplo Polling");
+            setInterval(consultarFechaServidor, 1000); //Cada un segundo..
+        });
+
+        /**
+         * Busca la fecha del servidor y la visualiza en el ID indicado.
+         */
+        function consultarFechaServidor(){
+            $.get("/polling", function(data){
+                $("#fecha").text(data);
+            });
+        }
+    </script>
 </head>
 <body>
 <h1>Ejemplos de llamada Polling del cliente al servidor</h1>
@@ -12,21 +31,5 @@
 <p>
     Abra la herramienta de desarrollador web para visualizar las peticiones que realiza el cliente....
 </p>
-<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-<script>
-    $(document).on("ready", function(){
-        console.info("Iniciando Jquery -  Ejemplo Polling");
-         setInterval(consultarFechaServidor, 1000); //Cada un segundo..
-    });
-
-    /**
-     * Busca la fecha del servidor y la visualiza en el ID indicado.
-     */
-    function consultarFechaServidor(){
-        $.get("/polling", function(data){
-            $("#fecha").text(data);
-        });
-    }
-</script>
 </body>
 </html>
