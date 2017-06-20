@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static spark.Spark.*;
-import static spark.debug.DebugScreen.enableDebugScreen;
+//import static spark.debug.DebugScreen.enableDebugScreen;
 
 import static j2html.TagCreator.*;
 
@@ -23,13 +23,14 @@ public class Main {
     public static void main(String[] args) {
 
         //Habilitando el debug.
-        enableDebugScreen(); //en productivo no habilitar.
+        //enableDebugScreen(); //en productivo no habilitar.
 
         //Indicnado la ruta directa de los recursos estaticos.
         staticFiles.location("/publico");
 
         //Debe ir antes de abrir alguna ruta.
         webSocket("/mensajeServidor", ServidorMensajesWebSocketHandler.class);
+        init();
 
         get("/",(request, response) ->{
             return "Ejemplo de SparkJava con WebSocket";

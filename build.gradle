@@ -17,7 +17,8 @@ dependencies {
     compile 'com.sparkjava:spark-core:2.6.0'
     compile 'com.sparkjava:spark-template-freemarker:2.5.5'
     compile 'org.freemarker:freemarker:2.3.26-incubating'
-    compile 'com.sparkjava:spark-debug-tools:0.5'
+    //Habilitar el spark-debug-tool trae un conflicto de librerias con la versión 2.6.0 de Spark.
+    //compile 'com.sparkjava:spark-debug-tools:0.5'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.j2html:j2html:0.7'
 }
