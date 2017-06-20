@@ -20,5 +20,5 @@ dependencies {
     //Habilitar el spark-debug-tool trae un conflicto de librerias con la versión 2.6.0 de Spark.
     //compile 'com.sparkjava:spark-debug-tools:0.5'
     compile 'com.google.code.gson:gson:2.6.2'
-    compile 'com.j2html:j2html:0.7'
+    compile 'com.j2html:j2html:1.0.0'
 }

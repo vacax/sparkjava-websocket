@@ -1,6 +1,8 @@
 package com.avathartech.sjws.main;
 
 import com.avathartech.sjws.websocket.ServidorMensajesWebSocketHandler;
+import j2html.TagCreator;
+import j2html.tags.ContainerTag;
 import org.eclipse.jetty.websocket.api.Session;
 
 import java.io.IOException;
@@ -33,7 +35,14 @@ public class Main {
         init();
 
         get("/",(request, response) ->{
-            return "Ejemplo de SparkJava con WebSocket";
+            String tramaHtml = html(
+                    j2html.TagCreator.head(title("Ejemplo de WebSocket")),
+                    body(
+                            h1("Ejemplo de Ajax y WebSocket"),
+                            h2(a("Ejemplo Polling").withHref("/ejemploPolling.html")),
+                            h2(a("Ejemplo WebSocket").withHref("/ejemploWebSocket.html"))
+                    )).render();
+            return tramaHtml;
         });
 
         /**
