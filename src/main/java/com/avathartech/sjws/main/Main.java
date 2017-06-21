@@ -30,6 +30,11 @@ public class Main {
         //Indicnado la ruta directa de los recursos estaticos.
         staticFiles.location("/publico");
 
+        //mostrar los errores
+        exception(Exception.class, (exception, request, response) -> {
+               exception.printStackTrace();
+        });
+
         //Debe ir antes de abrir alguna ruta.
         webSocket("/mensajeServidor", ServidorMensajesWebSocketHandler.class);
         init();
