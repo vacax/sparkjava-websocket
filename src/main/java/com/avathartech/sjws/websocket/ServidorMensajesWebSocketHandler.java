@@ -48,7 +48,7 @@ public class ServidorMensajesWebSocketHandler {
         System.out.println("Recibiendo del cliente: "+usuario.getLocalAddress().getAddress().toString()+" - Mensaje"+message);
         try {
             //Enviar un simple mensaje al cliente que mando al servidor..
-            usuario.getRemote().sendString("Mensaje enviado al Servidor: "+message);
+            usuario.getRemote().sendString("El Mensaje fue recibido por el servidor: "+message);
             //mostrando a todos los clientes
             Main.enviarMensajeAClientesConectados(message, "azul");
 
